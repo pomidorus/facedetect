@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:768016455892:android:f6a28e683e7af42c",
+        "mobilesdk_app_id": "1:768016455892:android:ffc28dc893f6bdbb",
         "android_client_info": {
-          "package_name": "com.petioleapp.facedetect"
+          "package_name": "com.petioleapp.faceselfielibrary"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "768016455892-edci4q0oqvfersia3lgtgmcd2f8ho9li.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.petioleapp.facedetect",
-            "certificate_hash": "02f0677faa3ea3c2be875297fdd27a40e70097ff"
-          }
-        },
         {
           "client_id": "768016455892-r25n20uv3d7vfue2ridbt2hibvmkgu8q.apps.googleusercontent.com",
           "client_type": 3
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "768016455892-r25n20uv3d7vfue2ridbt2hibvmkgu8q.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
