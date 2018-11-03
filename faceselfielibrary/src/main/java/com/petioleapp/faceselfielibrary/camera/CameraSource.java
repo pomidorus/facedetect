@@ -188,9 +188,19 @@ public class CameraSource {
         }
     };
 
-    public void takePicture(FacePreviewActivity activity) {
+    public int sceneClassification() {
+      return frameProcessor.sceneClassification();
+    }
+
+    public int takePicture(FacePreviewActivity activity) {
       this.parentActivity = activity;
-      camera.takePicture(null, null, mPicture);
+
+      if (frameProcessor.sceneClassification() == 1) {
+          camera.takePicture(null, null, mPicture);
+          return 1;
+      }
+
+      return frameProcessor.sceneClassification();
     }
 
     /**

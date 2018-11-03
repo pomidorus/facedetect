@@ -17,11 +17,29 @@ import kotlinx.android.synthetic.main.activity_face_preview.*
 import java.io.IOException
 import android.app.Activity
 import android.content.Intent
-
+import android.os.Handler
+import android.widget.Toast
 
 
 class FacePreviewActivity : AppCompatActivity() {
     private var cameraSource: CameraSource? = null
+    private val handler = Handler()
+    private var duration: Int = 0
+    private var that: FacePreviewActivity? = null
+
+    private val selfieCheck = object : Runnable {
+        override fun run() {
+            try {
+                if ((cameraSource?.sceneClassification().let { it == 1 }) == true) {
+                    cameraSource?.takePicture(that)
+                }
+
+                handler.postDelayed(this, 3000)
+            } catch (e: Exception) {
+            }
+
+        }
+    }
 
     private val requiredPermissions: Array<String?>
         get() {
@@ -45,6 +63,8 @@ class FacePreviewActivity : AppCompatActivity() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_face_preview)
 
+        that = this
+
         if (facePreview == null) { }
 
         facePreview.stop()
@@ -56,8 +76,17 @@ class FacePreviewActivity : AppCompatActivity() {
         }
 
         takePicture.setOnClickListener {
-            cameraSource?.takePicture(this)
+            val res = cameraSource?.takePicture(this)
+            if (res == 0) {
+                Toast.makeText(this, "No faces detected", Toast.LENGTH_SHORT).show()
+            }
+
+            if ((res?.let { it >= 1 }) == true) {
+                Toast.makeText(this, "To many faces", Toast.LENGTH_SHORT).show()
+            }
         }
+
+        handler.post(selfieCheck)
     }
 
     fun finishFlow(fileName: String) {

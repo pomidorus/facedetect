@@ -21,15 +21,22 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
     private static final String TAG = "FaceDetectionProcessor";
 
     private final FirebaseVisionFaceDetector detector;
+    private int facesSize;
+
+    @Override
+    public int sceneClassification() {
+        return facesSize;
+    }
 
     public FaceDetectionProcessor() {
         FirebaseVisionFaceDetectorOptions options =
                 new FirebaseVisionFaceDetectorOptions.Builder()
                         .setPerformanceMode(FirebaseVisionFaceDetectorOptions.FAST)
-                        .setContourMode(FirebaseVisionFaceDetectorOptions.ALL_CONTOURS)
+                        .setClassificationMode(FirebaseVisionFaceDetectorOptions.ALL_CLASSIFICATIONS)
                         .build();
 
         detector = FirebaseVision.getInstance().getVisionFaceDetector(options);
+        facesSize = 0;
     }
 
     @Override
@@ -59,10 +66,12 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
             graphicOverlay.add(imageGraphic);
         }
 
+        facesSize = faces.size();
+
         for (int i = 0; i < faces.size(); ++i) {
             FirebaseVisionFace face = faces.get(i);
             int cameraFacing = frameMetadata != null ? frameMetadata.getCameraFacing() : Camera.CameraInfo.CAMERA_FACING_BACK;
-            FaceContourGraphic faceGraphic = new FaceContourGraphic(graphicOverlay, face);
+            FaceGraphic faceGraphic = new FaceGraphic(graphicOverlay, face, cameraFacing);
             graphicOverlay.add(faceGraphic);
         }
 
