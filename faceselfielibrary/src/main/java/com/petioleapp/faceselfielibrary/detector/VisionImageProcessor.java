@@ -1,7 +1,9 @@
-package com.petioleapp.facedetect;
+package com.petioleapp.faceselfielibrary.detector;
 
 import android.graphics.Bitmap;
 import com.google.firebase.ml.common.FirebaseMLException;
+import com.petioleapp.faceselfielibrary.camera.FrameMetadata;
+import com.petioleapp.faceselfielibrary.camera.GraphicOverlay;
 
 import java.nio.ByteBuffer;
 
@@ -16,3 +18,4 @@ public interface VisionImageProcessor {
     /** Stops the underlying machine learning model and release resources. */
     void stop();
 }
+

@@ -1,4 +1,4 @@
-package com.petioleapp.facedetect
+package com.petioleapp.faceselfielibrary.activities
 
 import android.content.Context
 import android.content.pm.PackageManager
@@ -8,6 +8,9 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.util.Log
 import com.google.firebase.ml.common.FirebaseMLException
+import com.petioleapp.faceselfielibrary.R
+import com.petioleapp.faceselfielibrary.camera.CameraSource
+import com.petioleapp.faceselfielibrary.detector.FaceDetectionProcessor
 import kotlinx.android.synthetic.main.activity_face_preview.*
 import java.io.IOException
 
@@ -76,8 +79,7 @@ class FacePreviewActivity : AppCompatActivity() {
         }
 
         if (!allNeededPermissions.isEmpty()) {
-            ActivityCompat.requestPermissions(
-                this, allNeededPermissions.toTypedArray(), PERMISSION_REQUESTS)
+            ActivityCompat.requestPermissions(this, allNeededPermissions.toTypedArray(), PERMISSION_REQUESTS)
         }
     }
 
@@ -99,7 +101,7 @@ class FacePreviewActivity : AppCompatActivity() {
 
         try {
             cameraSource?.let {
-              it.setMachineLearningFrameProcessor(FaceDetectionProcessor())
+                it.setMachineLearningFrameProcessor(FaceDetectionProcessor())
             }
         } catch (e: FirebaseMLException) {
             Log.e(TAG, "can not create camera source")

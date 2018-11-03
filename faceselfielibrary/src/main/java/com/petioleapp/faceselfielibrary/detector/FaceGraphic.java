@@ -1,4 +1,4 @@
-package com.petioleapp.facedetect;
+package com.petioleapp.faceselfielibrary.detector;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -6,6 +6,8 @@ import android.graphics.Paint;
 import com.google.firebase.ml.vision.common.FirebaseVisionPoint;
 import com.google.firebase.ml.vision.face.FirebaseVisionFace;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceLandmark;
+import com.petioleapp.faceselfielibrary.camera.CameraSource;
+import com.petioleapp.faceselfielibrary.camera.GraphicOverlay;
 
 public class FaceGraphic extends GraphicOverlay.Graphic {
     private static final float FACE_POSITION_RADIUS = 4.0f;

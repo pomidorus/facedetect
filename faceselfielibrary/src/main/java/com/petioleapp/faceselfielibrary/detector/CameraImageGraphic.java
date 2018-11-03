@@ -1,8 +1,9 @@
-package com.petioleapp.facedetect;
+package com.petioleapp.faceselfielibrary.detector;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import com.petioleapp.faceselfielibrary.camera.GraphicOverlay;
 
 public class CameraImageGraphic extends GraphicOverlay.Graphic {
 

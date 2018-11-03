@@ -1,4 +1,4 @@
-package com.petioleapp.facedetect;
+package com.petioleapp.faceselfielibrary.camera;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

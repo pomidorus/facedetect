@@ -1,4 +1,4 @@
-package com.petioleapp.facedetect;
+package com.petioleapp.faceselfielibrary.camera;
 
 public class FrameMetadata {
 

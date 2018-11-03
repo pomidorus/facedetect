@@ -1,4 +1,4 @@
-package com.petioleapp.facedetect;
+package com.petioleapp.faceselfielibrary.camera;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -14,6 +14,7 @@ import android.util.Size;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.WindowManager;
+import com.petioleapp.faceselfielibrary.detector.VisionImageProcessor;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

@@ -1,4 +1,4 @@
-package com.petioleapp.facedetect;
+package com.petioleapp.faceselfielibrary.detector;
 
 import android.graphics.Bitmap;
 import android.hardware.Camera;
@@ -11,6 +11,8 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.face.FirebaseVisionFace;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
+import com.petioleapp.faceselfielibrary.camera.FrameMetadata;
+import com.petioleapp.faceselfielibrary.camera.GraphicOverlay;
 
 import java.io.IOException;
 import java.util.List;
@@ -61,7 +63,7 @@ public class FaceDetectionProcessor extends VisionProcessorBase<List<FirebaseVis
             FirebaseVisionFace face = faces.get(i);
 
             int cameraFacing = frameMetadata != null ? frameMetadata.getCameraFacing() :
-                            Camera.CameraInfo.CAMERA_FACING_BACK;
+                    Camera.CameraInfo.CAMERA_FACING_BACK;
             FaceGraphic faceGraphic = new FaceGraphic(graphicOverlay, face, cameraFacing);
             graphicOverlay.add(faceGraphic);
         }

@@ -1,4 +1,4 @@
-package com.petioleapp.facedetect;
+package com.petioleapp.faceselfielibrary.camera;
 
 import android.graphics.*;
 import android.hardware.Camera;
