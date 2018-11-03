@@ -19,5 +19,63 @@
     />
 
   </com.petioleapp.faceselfielibrary.camera.CameraSourcePreview>
+  <android.support.constraint.Guideline
+    android:id="@+id/guideline4"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    app:layout_constraintGuide_percent="0.35"
+  />
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guideline5"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    app:layout_constraintGuide_percent="0.65"
+  />
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guideline2"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintGuide_percent="0.15"
+  />
+
+  <android.support.constraint.Guideline
+    android:id="@+id/guideline3"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintGuide_percent="0.75"
+  />
+
+  <FrameLayout
+    android:layout_width="220dp"
+    android:layout_height="340dp"
+    android:background="@drawable/face_oval"
+
+    app:layout_constraintLeft_toLeftOf="@+id/guideline4"
+    app:layout_constraintRight_toRightOf="@+id/guideline5"
+    app:layout_constraintTop_toTopOf="@+id/guideline2"
+    app:layout_constraintBottom_toTopOf="@+id/guideline3"
+  >
+
+  </FrameLayout>
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/floatingActionButton"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    app:srcCompat="@android:drawable/btn_star_big_on"
+
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    android:layout_marginBottom="32dp"/>
 
 </android.support.constraint.ConstraintLayout>

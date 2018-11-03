@@ -36,9 +36,7 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
     }
 
     @Override
-    public synchronized void process(
-            ByteBuffer data, final FrameMetadata frameMetadata, final GraphicOverlay
-            graphicOverlay) {
+    public synchronized void process( ByteBuffer data, final FrameMetadata frameMetadata, final GraphicOverlay graphicOverlay) {
         latestImage = data;
         latestImageMetaData = frameMetadata;
         if (processingImage == null && processingMetaData == null) {
@@ -49,8 +47,7 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
     // Bitmap version
     @Override
     public void process(Bitmap bitmap, final GraphicOverlay graphicOverlay) {
-        detectInVisionImage(null /* bitmap */, FirebaseVisionImage.fromBitmap(bitmap), null,
-                graphicOverlay);
+        detectInVisionImage(null /* bitmap */, FirebaseVisionImage.fromBitmap(bitmap), null, graphicOverlay);
     }
 
     private synchronized void processLatestImage(final GraphicOverlay graphicOverlay) {
