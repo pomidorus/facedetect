@@ -24,7 +24,6 @@ import android.widget.Toast
 class FacePreviewActivity : AppCompatActivity() {
     private var cameraSource: CameraSource? = null
     private val handler = Handler()
-    private var duration: Int = 0
     private var that: FacePreviewActivity? = null
 
     private val selfieCheck = object : Runnable {
