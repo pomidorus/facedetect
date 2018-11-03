@@ -15,6 +15,10 @@ import com.petioleapp.faceselfielibrary.camera.CameraSource
 import com.petioleapp.faceselfielibrary.detector.FaceDetectionProcessor
 import kotlinx.android.synthetic.main.activity_face_preview.*
 import java.io.IOException
+import android.app.Activity
+import android.content.Intent
+
+
 
 class FacePreviewActivity : AppCompatActivity() {
     private var cameraSource: CameraSource? = null
@@ -50,6 +54,17 @@ class FacePreviewActivity : AppCompatActivity() {
         } else {
             getRuntimePermissions()
         }
+
+        takePicture.setOnClickListener {
+            cameraSource?.takePicture(this)
+        }
+    }
+
+    fun finishFlow(fileName: String) {
+        val returnIntent = Intent()
+        returnIntent.putExtra("fileName", fileName)
+        setResult(Activity.RESULT_OK, returnIntent)
+        finish()
     }
 
     private fun startCameraSource() {

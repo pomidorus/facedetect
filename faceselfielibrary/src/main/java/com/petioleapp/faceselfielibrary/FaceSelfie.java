@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.petioleapp.faceselfielibrary.activities.FacePreviewActivity;
 
-public class FaceSelfie extends Activity {
+public class FaceSelfie {
     private Activity mContext;
 
     public FaceSelfie(Context context) {

@@ -14,14 +14,20 @@ import android.util.Size;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.WindowManager;
+import com.petioleapp.faceselfielibrary.activities.FacePreviewActivity;
 import com.petioleapp.faceselfielibrary.detector.VisionImageProcessor;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
+
+import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
 
 @SuppressLint("MissingPermission")
 public class CameraSource {
@@ -92,6 +98,8 @@ public class CameraSource {
     // @GuardedBy("processorLock")
     private VisionImageProcessor frameProcessor;
 
+    private FacePreviewActivity parentActivity;
+
     /**
      * Map to convert between a byte array, received from the camera, and its associated byte buffer.
      * We use byte buffers internally because this is a more efficient way to call into native code
@@ -150,6 +158,39 @@ public class CameraSource {
         processingRunnable.setActive(true);
         processingThread.start();
         return this;
+    }
+
+    private Camera.PictureCallback mPicture = new Camera.PictureCallback() {
+        @Override
+        public void onPictureTaken(byte[] data, Camera camera) {
+            File pictureFile = FileUtils.getOutputMediaFile(MEDIA_TYPE_IMAGE);
+            if (pictureFile == null){
+                Log.d(TAG, "Error creating media file, check storage permissions");
+                return;
+            }
+
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(pictureFile);
+                fos.write(data);
+            } catch (FileNotFoundException e) {
+                Log.d(TAG, "File not found: " + e.getMessage());
+            } catch (IOException e) {
+                Log.d(TAG, "Error accessing file: " + e.getMessage());
+            } finally {
+               try {
+                 fos.close();
+                 parentActivity.finishFlow(pictureFile.getPath());
+               } catch (IOException e) {
+
+               }
+            }
+        }
+    };
+
+    public void takePicture(FacePreviewActivity activity) {
+      this.parentActivity = activity;
+      camera.takePicture(null, null, mPicture);
     }
 
     /**
