@@ -29,6 +29,6 @@ General flow looks like this:
 - file name passed back to MainActivity for further processing
 - GraphicOverlay uses for display info about detected face
 
-![alt text](https://github.com/pomidorus/facedetect/blob/master/screen_01.png "Screen 01")
-![alt text](https://github.com/pomidorus/facedetect/blob/master/screen_02.png "Screen 02")
-![alt text](https://github.com/pomidorus/facedetect/blob/master/screen_03.png "Screen 03")
+![alt text](https://github.com/pomidorus/facedetect/blob/master/screen_01.png "Screen 01"){:height="200px" width="100px"}
+![alt text](https://github.com/pomidorus/facedetect/blob/master/screen_02.png "Screen 02"){:height="200px" width="100px"}
+![alt text](https://github.com/pomidorus/facedetect/blob/master/screen_03.png "Screen 03"){:height="200px" width="100px"}
